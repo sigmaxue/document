@@ -7,6 +7,7 @@ DiskGenius + Ext2Fsd + WinGrub + EasyBCD + ubantu/centos
 windows 下挂载、显示linux 文件系统格式内容
 *** WinGrub
 查看硬盘分区表
+[[https://github.com/sigmaxue/document/edit/main/system/wingrub.png]]
 *** EasyBCD
 设置系统引导
 *** linux.iso
