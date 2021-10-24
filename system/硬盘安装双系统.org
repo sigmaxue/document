@@ -1,0 +1,13 @@
+* windows 下硬盘安装linux 双系统
+** 工具
+DiskGenius + Ext2Fsd + WinGrub + EasyBCD + ubantu/centos
+*** DiskGenius
+硬盘分区、格式化
+*** Ext2Fsd
+windows 下挂载、显示linux 文件系统格式内容
+*** WinGrub
+查看硬盘分区表
+*** EasyBCD
+设置系统引导
+*** linux.iso
+linux 系统镜像
