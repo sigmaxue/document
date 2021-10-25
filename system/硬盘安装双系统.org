@@ -62,6 +62,7 @@ DiskGenius + Ext2Fsd + WinGrub + EasyBCD + ubantu/centos
     </sup>
     </p>
     #+end_html
+    windows 路径:  C:\NST\menu.lst
     #+begin_src 
     title Install Ubuntu 
     root (hd1,2) 
@@ -71,7 +72,7 @@ DiskGenius + Ext2Fsd + WinGrub + EasyBCD + ubantu/centos
     #+begin_src 
     title Install Centos 
     root (hd1,2) 
-    kernel (hd1,2)/vmlinuz 
+    kernel (hd1,2)/vmlinuz linux repo=hd:/dev/sdb8:/
     initrd (hd1,2)/initrd
     #+end_src 
    
