@@ -2,13 +2,15 @@
 ** 工具
 DiskGenius + Ext2Fsd + WinGrub + EasyBCD + ubantu/centos
 *** DiskGenius
-硬盘分区、格式化
+  硬盘分区、格式化
 *** Ext2Fsd
-windows 下挂载、显示linux 文件系统格式内容
+    windows 下挂载、显示linux 文件系统格式内容
+
 *** WinGrub
+    查看硬盘分区表,设置系统引导需要
     #+begin_html
     <p align="center">
-    <img src="wingrub.png" width="300">
+    <img src="./images/wingrub.png" width="300">
     <br>
     <sup>
     查看硬盘分区表
@@ -17,6 +19,72 @@ windows 下挂载、显示linux 文件系统格式内容
     #+end_html
 
 *** EasyBCD
-设置系统引导
-*** linux.iso
-linux 系统镜像
+    设置系统引导
+
+*** ubantu/centos
+    linux 系统镜像.iso
+
+    
+** 安装流程
+   
+*** 1、硬盘分区
+    DiskGenius 划分8G 系统安装分区(ext3)、200G linux 系统分区
+
+*** 2、windows 挂载 linux 分区
+    
+**** windows 系统下, ext2fsd 挂载8G 分区
+    #+begin_html
+    <p align="center">
+        <img src="images/ext2fsd.png" width="300">
+        <br>
+        <sup>
+        ext2fsd 挂载linux 分区
+        </sup>
+    </p>
+    #+end_html 
+    
+**** copy 系统安装必要程序到8G 分区
+     + initrd  (./casper/initrd)
+     + vmlinuz (./casper/vmlinuz)
+     + ubuntu-18.04-desktop-amd64.iso/centos-xxx-xxx.iso
+
+*** 3、windows系统安装linux 安装引导
+    
+**** wingrub 查看8G安装盘标识 (hd1, 2)
+    
+**** easybcd 编辑系统引导
+     #+begin_html
+    <p align="center">
+    <img src="./images/easybcd_install_linux.png" width="300">
+    <br>
+    <sup>
+    系统安装引导
+    </sup>
+    </p>
+    #+end_html
+    #+begin_src 
+    title Install Ubuntu 
+    root (hd1,2) 
+    kernel (hd1,2)/vmlinuz boot=casper iso-scan/filename=/ubuntu-18.04-desktop-amd64.iso ro quiet splash locale=zh_CN.UTF-8 
+    initrd (hd1,2)/initrd
+    #+end_src 
+    #+begin_src 
+    title Install Centos 
+    root (hd1,2) 
+    kernel (hd1,2)/vmlinuz 
+    initrd (hd1,2)/initrd
+    #+end_src 
+   
+    
+*** 4、重启系统，进入linux 系统安装
+    [[https://www.google.com.hk/search?q=linux+%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85][google: linux系统安装]]
+*** 5、重启系统，windows 下设置linux 系统引导
+    #+begin_html
+    <p align="center">
+        <img src="./images/boot_linux.png" width="300">
+        <br>
+        <sup>
+	linux系统引导设置
+        </sup>
+    </p>
+    #+end_html 
